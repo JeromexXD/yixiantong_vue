@@ -5,7 +5,7 @@ import Index from '@/pages/Index';
 import List from '@/pages/List';
 import Detail from '@/pages/Detail';
 import City from '@/pages/City';
-import Search from '@/pages/Index';
+import Search from '@/pages/Search';
 
 Vue.use(Router)
 

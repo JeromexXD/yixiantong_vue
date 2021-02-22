@@ -1,12 +1,17 @@
 <template>
   <div class="container">
-    index
+    <home-header></home-header>
   </div>
 </template>
 
 <script>
+import HomeHeader from 'components/Header/Home'
+
   export default {
-    name: 'Index'
+    name: 'Index',
+    components: {
+      HomeHeader
+    }
   }
 </script>
 
