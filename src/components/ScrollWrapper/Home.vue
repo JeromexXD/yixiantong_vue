@@ -1,28 +1,31 @@
 <template>
   <div class="scroll-wrapper" ref="wrapper">
     <div class="scroll-content">
-      <category-icons></category-icons>
-      <home-title :title="homeTitles.viewTitle"></home-title>
-      <view-list 
-        :viewDatas="homeDatas.viewDatas">
-      </view-list>
-      <home-title :title="homeTitles.foodTitle"></home-title>
-      <food-list
-        :foodDatas="homeDatas.foodDatas"
-        >
-      </food-list>
-      <home-title :title="homeTitles.hotelTitle"></home-title>
-      <hotel-list
-        :hotelDatas="homeDatas.hotelDatas">
-      </hotel-list>
-      <home-title :title="homeTitles.massageTitle"></home-title>
-      <massage-list
-        :massageDatas="homeDatas.massageDatas">
-      </massage-list>
-      <home-title :title="homeTitles.ktvTitle"></home-title>
-      <ktv-list
-        :ktvDatas="homeDatas.ktvDatas">
-      </ktv-list>
+      <div v-if="!errorShow">
+        <category-icons></category-icons>
+        <home-title :title="homeTitles.viewTitle"></home-title>
+        <view-list 
+          :viewDatas="homeDatas.viewDatas">
+        </view-list>
+        <home-title :title="homeTitles.foodTitle"></home-title>
+        <food-list
+          :foodDatas="homeDatas.foodDatas"
+          >
+        </food-list>
+        <home-title :title="homeTitles.hotelTitle"></home-title>
+        <hotel-list
+          :hotelDatas="homeDatas.hotelDatas">
+        </hotel-list>
+        <home-title :title="homeTitles.massageTitle"></home-title>
+        <massage-list
+          :massageDatas="homeDatas.massageDatas">
+        </massage-list>
+        <home-title :title="homeTitles.ktvTitle"></home-title>
+        <ktv-list
+          :ktvDatas="homeDatas.ktvDatas">
+        </ktv-list>
+      </div>
+      <error v-else></error>
     </div>
   </div>
 </template>
@@ -40,6 +43,7 @@ import FoodList from './FoodList/Index'
 import HotelList from './HotelList/Index'
 import MassageList from './MassageList/Index'
 import KtvList from './KtvList/Index'
+import Error from 'components/ScrollWrapper/Sub/Error'
 
   export default {
     name: 'HomeScrollWrapper',
@@ -50,10 +54,12 @@ import KtvList from './KtvList/Index'
       FoodList,
       HotelList,
       MassageList,
-      KtvList
+      KtvList,
+      Error
     },
     data () {
       return {
+        errorShow: false,
         homeTitles: {
           viewTitle: '推荐景点',
           foodTitle: '推荐美食',
@@ -86,13 +92,17 @@ import KtvList from './KtvList/Index'
             if (res && res.status === 0) {
               const data = res.data;
 
-
+              this.errorShow = false;
               this.homeDatas.foodDatas = tools.formatJSON(data.foodDatas, 'keyword');
               this.homeDatas.hotelDatas = data.hotelDatas;
               this.homeDatas.ktvDatas = data.ktvDatas;
               this.homeDatas.massageDatas = data.massageDatas;
               this.homeDatas.viewDatas = data.viewDatas;
             }
+          })
+          .catch (err => {
+            console.log(err);
+            this.errorShow = true;
           })
       }
     }
