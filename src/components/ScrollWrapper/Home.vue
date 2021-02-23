@@ -4,13 +4,25 @@
       <category-icons></category-icons>
       <home-title :title="homeTitles.viewTitle"></home-title>
       <view-list 
-        :viewTitle="homeTitles.viewTitle"
         :viewDatas="homeDatas.viewDatas">
       </view-list>
-      <food-list></food-list>
-      <hotel-list></hotel-list>
-      <massage-list></massage-list>
-      <ktv-list></ktv-list>
+      <home-title :title="homeTitles.foodTitle"></home-title>
+      <food-list
+        :foodDatas="homeDatas.foodDatas"
+        >
+      </food-list>
+      <home-title :title="homeTitles.hotelTitle"></home-title>
+      <hotel-list
+        :hotelDatas="homeDatas.hotelDatas">
+      </hotel-list>
+      <home-title :title="homeTitles.massageTitle"></home-title>
+      <massage-list
+        :massageDatas="homeDatas.massageDatas">
+      </massage-list>
+      <home-title :title="homeTitles.ktvTitle"></home-title>
+      <ktv-list
+        :ktvDatas="homeDatas.ktvDatas">
+      </ktv-list>
     </div>
   </div>
 </template>
@@ -19,6 +31,7 @@
 import BetterScroll from 'better-scroll'
 import { IndexModel } from 'models/index'
 import { mapState } from 'vuex'
+import tools from 'utils/tools'
 
 import CategoryIcons from './CategoryIcons/Index'
 import HomeTitle from 'components/ScrollWrapper/Sub/HomeTitle'
@@ -73,7 +86,8 @@ import KtvList from './KtvList/Index'
             if (res && res.status === 0) {
               const data = res.data;
 
-              this.homeDatas.foodDatas = data.foodDatas;
+
+              this.homeDatas.foodDatas = tools.formatJSON(data.foodDatas, 'keyword');
               this.homeDatas.hotelDatas = data.hotelDatas;
               this.homeDatas.ktvDatas = data.ktvDatas;
               this.homeDatas.massageDatas = data.massageDatas;
