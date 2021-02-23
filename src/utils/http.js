@@ -12,7 +12,7 @@ class HTTP {
       data: qs.stringify(opt.data)
     })
       .then((res) => {
-        opt.success(res)
+        opt.success(res.data)
       })
       .catch((err) => {
         opt.error(err)
