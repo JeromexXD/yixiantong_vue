@@ -1,7 +1,7 @@
 <template>
   <div class="city">
     <router-link to="city">
-      <span class="city-name">全部</span>
+      <span class="city-name">{{ city }}</span>
       <span class="iconfont icon-header-arrow"></span>
     </router-link>
   </div>
@@ -9,7 +9,10 @@
 
 <script>
   export default {
-    name: 'CitySelector'
+    name: 'CitySelector',
+    props: {
+      city: String
+    }
   }
 </script>
 

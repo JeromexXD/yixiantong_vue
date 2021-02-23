@@ -34,5 +34,6 @@ import BackWard from './Sub/BackWard';
   height: $headerHeight;
   background-color: $defaultBgColor;
   font-size: .18rem;
+  color: #fff;
 }
 </style>

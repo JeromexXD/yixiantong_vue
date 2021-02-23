@@ -1,11 +1,13 @@
 <template>
   <header class="header">
-    <city-selector :city="city"></city-selector>
+    <city-selector :city="cityName"></city-selector>
     <false-input></false-input>
   </header>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import CitySelector from './Sub/CitySelector'
 import FalseInput from './Sub/FalseInput'
 
@@ -13,9 +15,11 @@ import FalseInput from './Sub/FalseInput'
     name: 'HomeHeader',
     data () {
       return {
-        city: '',
-        placeholder: '...'
+
       }
+    },
+    computed: {
+      ...mapState(['cityName'])
     },
     components: {
       CitySelector,

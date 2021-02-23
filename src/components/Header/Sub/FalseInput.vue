@@ -25,7 +25,7 @@
   .false-input {
     flex: 1;
     height: 100%;
-    padding: .08rem .12rem;
+    padding: .06rem .08rem;
     box-sizing: border-box;
 
     .input {
@@ -35,6 +35,7 @@
       border-radius: .03rem;
       line-height: .25rem;
       background-color: #fff;
+      color: #989898;
 
       .iconfont {
         font-size: .18rem;
