@@ -1,6 +1,6 @@
 <template>
   <div class="massage-sub">
-    <router-link :to="{path: '/detail', query: {field: 'massgae', id: data.id}}">
+    <router-link :to="{path: '/detail', query: {field: 'massage', id: data.id}}">
       <div class="img-wrap">
         <img class="img" :src="data.img" />
       </div>

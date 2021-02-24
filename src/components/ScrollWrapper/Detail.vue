@@ -6,6 +6,23 @@
         v-if="field === 'view'"
         :data="data">
       </view-detail>
+      <food-detail
+        v-if="field === 'food'"
+        :data="data"
+      ></food-detail>
+      <hotel-detail
+        v-if="field === 'hotel'"
+        :data="data"
+      ></hotel-detail>
+      <massage-detail
+        v-if="field === 'massage'"
+        :data="data"
+      ></massage-detail>
+      <ktv-detail
+        v-if="field === 'ktv'"
+        :data="data"
+      >
+      </ktv-detail>
     </div>
   </div>
 </template>
@@ -17,12 +34,20 @@ import tools from 'utils/tools'
 
 import Swiper from 'components/ScrollWrapper/Sub/Swiper'
 import ViewDetail from './Detail/View'
+import FoodDetail from './Detail/Food'
+import HotelDetail from './Detail/Hotel'
+import MassageDetail from './Detail/Massage'
+import KtvDetail from './Detail/Ktv'
 
   export default {
     name: 'DetailScrollWrapper',
     components: {
       Swiper,
-      ViewDetail
+      ViewDetail,
+      FoodDetail,
+      HotelDetail,
+      MassageDetail,
+      KtvDetail
     },
     data () {
       return {
