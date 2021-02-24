@@ -10,5 +10,15 @@ export default {
   
   strToArr (str) {
     return str.split(',')
-  }
+  },
+
+  jsonToArr (str) {
+    return JSON.parse(str);
+  },
+
+  replaceToSpace (str) {
+    return str.replace(/,/g, ' ');
+  },
+
+  
 }
