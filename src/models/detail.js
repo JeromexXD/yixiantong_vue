@@ -10,9 +10,9 @@ class DetailModel extends HTTP {
           field,
           id
         },
-        success (res) {
+        success (data) {
           resolve({
-            res,
+            data,
             status: 0
           })
         },

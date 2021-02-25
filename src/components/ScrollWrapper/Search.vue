@@ -1,18 +1,23 @@
 <template>
   <div class="scroll-wrapper" ref="wrapper">
     <div class="scroll-content">
-
+      <no-data-tip v-show="tipShow"></no-data-tip>
     </div>
   </div>
 </template>
 
 <script>
 import BetterScroll from 'better-scroll'
+
+import NoDataTip from 'components/ScrollWrapper/Sub/NoDataTip'
   export default {
-    name: '',
+    name: 'SearchScrollWrapper',
+    components: {
+      NoDataTip
+    },
     data () {
       return {
-
+        tipShow: true
       }
     },
     mounted () {
