@@ -7,10 +7,7 @@
 
 <script>
 export default {
-  name: 'Error',
-  props: {
-
-  }
+  name: 'Error'
 }
 </script>
 

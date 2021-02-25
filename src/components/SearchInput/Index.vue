@@ -2,17 +2,46 @@
   <div class="search-input">
     <span class="iconfont icon-header-search"></span>
     <input class="input" type="text"    
-           :placeholder="placeholder" />
+           :placeholder="placeholder" 
+           v-model="keyword"
+           @input="searchAction"/>
   </div>
 </template>
 
 <script>
+import { SearchModel } from 'models/search'
+import { mapState } from 'vuex'
+import tools from 'utils/tools'
+
 export default {
   name: 'SearchInput',
   data () {
     return {
+      keyword: '',
       placeholder: '美食 / 景点 / 酒店 / 按摩 / KTV'
     }
+  },
+  computed: {
+    ...mapState(['cityId'])
+  },
+  methods: {
+    searchAction: tools.throttle(function () {
+      const searchModel = new SearchModel();
+      const keyword = tools.trimSpace(this.keyword);
+
+      if (keyword.length <= 0) {
+        this.$emit('onSearch', {});
+        return;
+      }
+
+      searchModel.searchAction(keyword, this.cityId)
+        .then(res => {
+          this.$emit('onSearch', res);
+        }) 
+        .catch(err => {
+          this.$emit('onSearch', err);
+        })
+    }, 600)
   }
 }
 </script>
